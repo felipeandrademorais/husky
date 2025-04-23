@@ -1,7 +1,7 @@
 module.exports = {
     rules: {
-        // Exige que a mensagem comece com o padrão [123]
-        "header-pattern": [
+        // Valida o cabeçalho inteiro com regex personalizada
+        "header-regex": [
             2,
             "always",
             /^\[\d+\] - (feat|fix|chore|docs|refactor|test|style): .+$/,

@@ -1,1 +1,12 @@
-npx commitlint --edit $1
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Regex que valida: [123] - fix: mensagem
+if ! echo "$COMMIT_MSG" | grep -Eq '^\[[0-9]+\] - (feat|fix|chore|docs|refactor|test|style): .+'; then
+  echo "❌ A mensagem de commit está fora do padrão."
+  echo "👉 Use: [123] - fix: descrição do commit"
+  exit 1
+fi
